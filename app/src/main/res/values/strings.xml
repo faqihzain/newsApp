@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+
+    <string name="sample_source">BBC News • 1h</string>
+    <string name="sample_title">Why would Putin want to nuke Florida?</string>
+    <string name="sample_title_long">PM Narendra Modi\'s frivolous statements won\'t help create wedge between me and Congress: Amarinder Singh</string>
+    <string name="sample_description">The Sunshine State is home to Mr Trump\'s golf resort, but bigger targets lie elsewhere in the US.</string>
+    <string name="image_desc">Image for the News Post</string>
+
+    <string name="title_headlines">Headlines</string>
+    <string name="title_saved">Saved</string>
+    <string name="title_sources">Sources</string>
+
+</resources>
