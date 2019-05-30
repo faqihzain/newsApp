@@ -15,8 +15,9 @@
     <string name="image_desc_share_button">share button</string>
     <string name="button_read_full_story">read full story</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="image_desc_source_image">Source Image</string>
+    <string name="sample_category">General</string>
 
+    <string name="bottom_sheet_option_open_in_browser">Open in browser</string>
 
 </resources>

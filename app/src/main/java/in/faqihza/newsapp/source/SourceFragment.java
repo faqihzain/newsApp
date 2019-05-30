@@ -2,35 +2,44 @@ package in.faqihza.newsapp.source;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import in.faqihza.newsapp.BaseApplication;
 import in.faqihza.newsapp.R;
+import in.faqihza.newsapp.models.Specification;
+import in.faqihza.newsapp.models.sources.Source;
+import in.faqihza.newsapp.models.sources.SourceWrapper;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SourceFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class SourceFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class SourceFragment extends Fragment implements SourceView {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    @Inject SourcePresenter presenter;
 
+    @BindView(R.id.rv_sources)
+    RecyclerView recyclerView;
+
+    RecyclerView.Adapter adapter;
+
+    private List<Source> articles = new ArrayList<>();
 
     public SourceFragment() {
         // Required empty public constructor
     }
 
-    // TODO: Rename and change types and number of parameters
     public static SourceFragment newInstance() {
         SourceFragment fragment = new SourceFragment();
 
@@ -40,17 +49,45 @@ public class SourceFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        ((BaseApplication) getActivity().getApplication()).createSourceComponent().inject(this);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_source, container, false);
+
+        View rootview = inflater.inflate(R.layout.fragment_source, container, false);
+        ButterKnife.bind(this, rootview);
+
+        adapter = new SourceAdapter(articles, this);
+        recyclerView.setAdapter(adapter);
+
+        return rootview;
     }
 
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        presenter.setView(this);
+        getSource();
+    }
+
+    private void getSource() {
+        Specification specification = new Specification();
+        specification.setLanguage(Locale.getDefault().getLanguage());
+        specification.setCountry(null);
+        presenter.getSource(specification);
+
+    }
+
+    @Override
+    public void showSource(SourceWrapper sourceWrapper) {
+        articles.clear();
+        articles.addAll(sourceWrapper.getSources());
+        adapter.notifyDataSetChanged();
+    }
 }

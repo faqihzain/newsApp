@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import in.faqihza.newsapp.headlines.HeadlinesFragment;
 import in.faqihza.newsapp.news.NewsFragment;
 import in.faqihza.newsapp.source.SourceFragment;
 

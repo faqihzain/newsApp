@@ -28,7 +28,7 @@ import java.util.TimeZone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.faqihza.newsapp.R;
-import in.faqihza.newsapp.models.Article;
+import in.faqihza.newsapp.models.news.Article;
 import in.faqihza.newsapp.utils.BindingUtils;
 
 public class DetailActivity extends AppCompatActivity {

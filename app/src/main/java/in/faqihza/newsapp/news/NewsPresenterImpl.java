@@ -1,6 +1,6 @@
 package in.faqihza.newsapp.news;
 
-import in.faqihza.newsapp.models.NewsWrapper;
+import in.faqihza.newsapp.models.news.NewsWrapper;
 import in.faqihza.newsapp.models.Specification;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;

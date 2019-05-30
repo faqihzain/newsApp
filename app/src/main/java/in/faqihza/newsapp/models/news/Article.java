@@ -1,11 +1,9 @@
-package in.faqihza.newsapp.models;
+package in.faqihza.newsapp.models.news;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.squareup.moshi.Json;
-
-import java.sql.Timestamp;
 
 public class Article implements Parcelable {
 

@@ -1,4 +1,4 @@
-package in.faqihza.newsapp;
+package in.faqihza.newsapp.headlines;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import in.faqihza.newsapp.R;
 import in.faqihza.newsapp.network.NewsApiService;
 
 public class HeadlinesFragment extends Fragment {

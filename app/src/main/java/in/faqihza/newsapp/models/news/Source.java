@@ -1,4 +1,4 @@
-package in.faqihza.newsapp.models;
+package in.faqihza.newsapp.models.news;
 
 import android.os.Parcel;
 import android.os.Parcelable;

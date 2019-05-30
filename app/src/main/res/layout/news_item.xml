@@ -7,15 +7,6 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--<data>-->
-
-        <!--<import type="in.faqihza.newsapp.utils.BindingUtils" />-->
-
-        <!--<variable-->
-            <!--name="news"-->
-            <!--type="in.faqihza.newsapp.models.Article" />-->
-    <!--</data>-->
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

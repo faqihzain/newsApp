@@ -1,4 +1,4 @@
-package in.faqihza.newsapp;
+package in.faqihza.newsapp.headlines;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

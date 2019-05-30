@@ -24,8 +24,8 @@ import butterknife.Unbinder;
 import in.faqihza.newsapp.BaseApplication;
 import in.faqihza.newsapp.R;
 import in.faqihza.newsapp.network.NewsApiService;
-import in.faqihza.newsapp.models.Article;
-import in.faqihza.newsapp.models.NewsWrapper;
+import in.faqihza.newsapp.models.news.Article;
+import in.faqihza.newsapp.models.news.NewsWrapper;
 import in.faqihza.newsapp.models.Specification;
 
 

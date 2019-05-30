@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.faqihza.newsapp.R;
-import in.faqihza.newsapp.models.Article;
+import in.faqihza.newsapp.models.news.Article;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
@@ -41,7 +41,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         context = viewGroup.getContext();
         View rootView = LayoutInflater.from(context).inflate(R.layout.news_item, viewGroup, false);
 
-        return new ViewHolder(rootView);    }
+        return new ViewHolder(rootView);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {

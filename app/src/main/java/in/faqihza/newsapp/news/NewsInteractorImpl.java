@@ -1,7 +1,7 @@
 package in.faqihza.newsapp.news;
 
 import in.faqihza.newsapp.network.NewsApiService;
-import in.faqihza.newsapp.models.NewsWrapper;
+import in.faqihza.newsapp.models.news.NewsWrapper;
 import in.faqihza.newsapp.models.Specification;
 import io.reactivex.Observable;
 
