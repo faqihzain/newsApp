@@ -45,7 +45,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-//        viewHolder.options.setOnClickListener(this);
+        viewHolder.options.setOnClickListener(view1 -> {
+            NewsAdapter.this.newsView.onItemOptionsClicked(articles.get(i));
+        });
+        viewHolder.article = articles.get(i);
+        viewHolder.itemView.setOnClickListener(viewHolder);
         viewHolder.newsTitle.setText(articles.get(i).getTitle());
         viewHolder.newsSource.setText(articles.get(i).getSource().getName());
 
@@ -92,9 +96,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         public void onClick(View view) {
             NewsAdapter.this.newsView.onNewsItemClicked(article);
 
-            options.setOnClickListener(view1 -> {
-                NewsAdapter.this.newsView.onItemOptionsClicked(article);
-            });
+
         }
     }
 }

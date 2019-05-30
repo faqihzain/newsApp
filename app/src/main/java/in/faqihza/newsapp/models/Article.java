@@ -1,8 +1,13 @@
 package in.faqihza.newsapp.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.squareup.moshi.Json;
 
-public class Article {
+import java.sql.Timestamp;
+
+public class Article implements Parcelable {
 
     @Json(name = "source")
     private Source source;
@@ -20,6 +25,33 @@ public class Article {
     private String publishedAt;
     @Json(name = "content")
     private String content;
+
+    public final static Parcelable.Creator<Article> CREATOR = new Creator<Article>() {
+
+
+        @SuppressWarnings({
+                "unchecked"
+        })
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        public Article[] newArray(int size) {
+            return (new Article[size]);
+        }
+
+    };
+
+    protected Article(Parcel in) {
+        this.source = ((Source) in.readValue((Source.class.getClassLoader())));
+        this.author = ((String) in.readValue((String.class.getClassLoader())));
+        this.title = ((String) in.readValue((String.class.getClassLoader())));
+        this.description = ((String) in.readValue((String.class.getClassLoader())));
+        this.url = ((String) in.readValue((String.class.getClassLoader())));
+        this.urlToImage = ((String) in.readValue((String.class.getClassLoader())));
+        this.publishedAt = ((String) in.readValue((String.class.getClassLoader())));
+        this.content = ((String) in.readValue((String.class.getClassLoader())));
+    }
 
     public Source getSource() {
         return source;
@@ -85,4 +117,18 @@ public class Article {
         this.content = content;
     }
 
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(source);
+        dest.writeValue(author);
+        dest.writeValue(title);
+        dest.writeValue(description);
+        dest.writeValue(url);
+        dest.writeValue(urlToImage);
+        dest.writeValue(publishedAt);
+        dest.writeValue(content);
+    }
+
+    public int describeContents() {
+        return 0;
+    }
 }

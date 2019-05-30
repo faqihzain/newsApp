@@ -140,7 +140,9 @@ public class NewsFragment extends Fragment implements NewsView {
     @Override
     public void onNewsItemClicked(Article article) {
         Intent intent = new Intent(getContext(), DetailActivity.class);
-        intent.putExtra(DetailActivity.PARAM_ARTICLE, article);
+        Bundle extras = new Bundle();
+        extras.putParcelable(DetailActivity.PARAM_ARTICLE, article);
+        intent.putExtras(extras);
         final LayoutAnimationController controller =
                 AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_animation_fall_down);
         recyclerView.setLayoutAnimation(controller);

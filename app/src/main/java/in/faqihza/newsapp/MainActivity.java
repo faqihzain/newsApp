@@ -1,18 +1,16 @@
 package in.faqihza.newsapp;
 
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import in.faqihza.newsapp.news.NewsFragment;
+import in.faqihza.newsapp.source.SourceFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     public Unbinder unbinder;
 
+    private SourceFragment sourceFragment;
     private HeadlinesFragment headlinesFragment;
     private NewsFragment newsFragment;
 
@@ -37,37 +36,40 @@ public class MainActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
             switch (item.getItemId()) {
                 case R.id.navigation_headlines:
+                    if (headlinesFragment == null) {
+                        headlinesFragment = HeadlinesFragment.newInstance();
+                    }
                     getSupportFragmentManager().beginTransaction()
                             .replace(R.id.fragment_container, headlinesFragment)
                             .commit();
                     bundle.putString("item_category",
-                                getString(R.string.title_headlines)
-                        );
+                            getString(R.string.title_headlines)
+                    );
                     return true;
-                    case R.id.navigation_saved:
-                        if (newsFragment == null) {
-                            newsFragment = NewsFragment.newInstance(null);
-                        }
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.fragment_container, newsFragment)
-                                .commit();
-                        bundle.putString(
-                                "item_category",
-                                getString(R.string.title_saved)
-                        );
-//                        return true;
-//                    case R.id.navigation_sources:
-//                        if (sourceFragment == null) {
-//                            sourceFragment = SourceFragment.newInstance();
-//                        }
-//                        getSupportFragmentManager().beginTransaction()
-//                                .replace(R.id.fragment_container, sourceFragment)
-//                                .commit();
-//                        bundle.putString(
-//                                FirebaseAnalytics.Param.ITEM_CATEGORY,
-//                                getString(R.string.title_sources)
-//                        );
-//                        return true;
+                case R.id.navigation_saved:
+                    if (newsFragment == null) {
+                        newsFragment = NewsFragment.newInstance(null);
+                    }
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, newsFragment)
+                            .commit();
+                    bundle.putString(
+                            "item_category",
+                            getString(R.string.title_saved)
+                    );
+                    return true;
+                case R.id.navigation_sources:
+                    if (sourceFragment == null) {
+                        sourceFragment = SourceFragment.newInstance();
+                    }
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.fragment_container, sourceFragment)
+                            .commit();
+                    bundle.putString(
+                            "item_category",
+                            getString(R.string.title_sources)
+                    );
+                    return true;
             }
             return false;
         });

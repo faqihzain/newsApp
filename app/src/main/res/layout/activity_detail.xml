@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:bind="http://schemas.android.com/apk/res-auto">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--<data>-->
-
-        <!--<import type="com.example.abhishek.newsapp.utils.BindingUtils" />-->
-
-        <!--<variable-->
-            <!--name="article"-->
-            <!--type="com.example.abhishek.newsapp.models.Article" />-->
-    <!--</data>-->
-
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
+        android:id="@+id/root"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -20,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="16dp"
-            tools:context=".ui.news.DetailActivity">
+            tools:context=".news.DetailActivity">
 
             <View
                 android:layout_width="0dp"
@@ -40,8 +35,7 @@
                 app:layout_constraintDimensionRatio="h,16:9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                bind:articleUrl="@{article.url}"
-                bind:urlToImage="@{article.urlToImage}" />
+                />
 
             <ImageButton
                 android:id="@+id/iv_save"
@@ -69,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@{BindingUtils.formatDateForDetails(article.publishedAt)}"
+                android:text=""
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -184,4 +178,4 @@
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
-</layout>
+</FrameLayout>

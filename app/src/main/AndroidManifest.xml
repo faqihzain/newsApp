@@ -20,6 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".news.DetailActivity"/>
+            <!--android:theme="@style/AppTheme.TransparentBar" />-->
+
     </application>
 
 </manifest>
