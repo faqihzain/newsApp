@@ -1,6 +1,7 @@
 package in.faqihza.newsapp.source;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.faqihza.newsapp.BaseApplication;
 import in.faqihza.newsapp.R;
+import in.faqihza.newsapp.WebviewActivity;
 import in.faqihza.newsapp.models.Specification;
 import in.faqihza.newsapp.models.sources.Source;
 import in.faqihza.newsapp.models.sources.SourceWrapper;
@@ -89,5 +91,12 @@ public class SourceFragment extends Fragment implements SourceView {
         articles.clear();
         articles.addAll(sourceWrapper.getSources());
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSourceItemClicked(Source source) {
+        Intent intent = new Intent(getContext(), WebviewActivity.class);
+        intent.putExtra("webUrl", source.getUrl());
+        startActivity(intent);
     }
 }

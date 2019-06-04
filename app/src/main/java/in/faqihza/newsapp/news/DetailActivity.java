@@ -1,7 +1,6 @@
 package in.faqihza.newsapp.news;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +27,7 @@ import java.util.TimeZone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import in.faqihza.newsapp.R;
+import in.faqihza.newsapp.WebviewActivity;
 import in.faqihza.newsapp.models.news.Article;
 import in.faqihza.newsapp.utils.BindingUtils;
 
@@ -186,7 +186,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private void setupButtonClickListener(final Article article) {
         btnReadFull.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(article.getUrl()));
+            Intent intent = new Intent(this, WebviewActivity.class);
+            intent.putExtra("webUrl", article.getUrl());
             startActivity(intent);
         });
     }

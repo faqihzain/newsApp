@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -66,6 +67,8 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.ViewHolder
                 .apply(options)
                 .into(viewHolder.sourceImage);
 
+        viewHolder.source = sources.get(i);
+
         viewHolder.sourceName.setText(sources.get(i).getName());
         viewHolder.sourceCategory.setText(BindingUtils.getSourceName(sources.get(i).getCategory(),sources.get(i).getCountry()));
         viewHolder.sourceDesc.setText(sources.get(i).getDescription());
@@ -76,6 +79,11 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.ViewHolder
         viewHolder.constraintLayout.setOnClickListener(view -> {
             mExpandedPosition = isExpanded ? -1 : position;
             notifyDataSetChanged();
+        });
+
+        viewHolder.btnOpen.setOnClickListener(view -> {
+            SourceAdapter.this.sourceView.onSourceItemClicked(viewHolder.source);
+
         });
     }
 
@@ -99,10 +107,12 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.ViewHolder
         TextView sourceDesc;
 
         @BindView(R.id.btn_open)
-        TextView btnOpen;
+        Button btnOpen;
 
         @BindView(R.id.rootCl)
         ConstraintLayout constraintLayout;
+
+        Source source;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
